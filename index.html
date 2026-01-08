@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuelda Financial Services (N.F.S)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Verdana, sans-serif;
+            background: #f2f2f2;
+            color: #222;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        .hero {
+            background: linear-gradient(135deg, #0f5132, #198754);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        .hero img {
+            max-height: 70px;
+            position: absolute;
+            left: 20px;
+            top: 15px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .section {
+            padding: 25px 30px;
+        }
+        .box {
+            border: 1px solid #e0e0e0;
+            padding: 22px;
+            margin-top: 18px;
+            border-radius: 14px;
+            background: #fdfefe;
+            position: relative;
+            overflow: hidden;
+        }
+        .box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #198754, #20c997);
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .note {
+            font-size: 13px;
+            color: #555;
+            margin-top: 5px;
+        }
+        button {
+            background: linear-gradient(135deg, #198754, #20c997);
+            background: linear-gradient(135deg, #0f5132, #198754);
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #146c43, #198754);
+            transform: translateY(-1px);
+        }
+        .summary {
+            border-left: 5px solid #198754;
+            margin-top: 15px;
+            background: #eef7f1;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        a.download {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 20px;
+            background: #0a7cff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a.download:hover {
+            background: #065dc1;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        ul {
+            margin-top: 10px;
+        }
+        @media screen and (max-width:600px){
+            .hero img{
+                position: static;
+                display:block;
+                margin:0 auto 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <img src="logo.png" alt="Nuelda Financial Services Logo">
+        <h1>Nuelda Financial Services (N.F.S)</h1>
+        <p>Short-Term Cash Loans • In-Person Disbursement Only</p>
+    </div>
+
+    <div class="section">
+        <h2>Loan Information</h2>
+        <div class="box">
+            <p><strong>Maximum Loan:</strong> ₦20,000</p>
+            <p><strong>Interest:</strong> 15% (deducted upfront)</p>
+            <p><strong>Repayment Period:</strong> 30 days</p>
+            <ul>
+                <li>₦10,000 → Receive ₦8,500 → Repay ₦10,000</li>
+                <li>₦20,000 → Receive ₦17,000 → Repay ₦20,000</li>
+            </ul>
+            <p><strong>Disbursement Method:</strong> Cash, in person</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Apply for a Loan (WhatsApp)</h2>
+        <p>Please fill all fields correctly. A loan officer will confirm details before approval.</p>
+
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="e.g. 08012345678" required>
+
+        <label>Home Address</label>
+        <input type="text" id="address" required>
+
+        <label>Occupation</label>
+        <input type="text" id="occupation" required>
+
+        <label>Amount Requested (₦5,000 – ₦20,000)</label>
+        <input type="number" id="amount" min="5000" max="20000" required oninput="calculateLoan()">
+        <div class="note">15% interest will be deducted immediately</div>
+
+        <div class="summary" id="summary" style="display:none;"></div>
+
+        <label>Reason for Loan</label>
+        <textarea id="reason" rows="4" required></textarea>
+
+        <button onclick="confirmAndSend()">Apply via WhatsApp</button>
+    </div>
+
+    <div class="section">
+        <h2>Borrower Agreement</h2>
+        <p>Review the loan agreement before applying.</p>
+        <a class="download" href="borrower_agreement.pdf" download>Download Borrower Agreement (PDF)</a>
+    </div>
+
+    <div class="section">
+        <h2>Terms & Legal Notice</h2>
+        <p>
+            Nuelda Financial Services (N.F.S) provides short-term personal loans only. Approval is subject to verification. 
+            A 15% interest fee is deducted upfront. The borrower agrees to repay the full approved amount within 30 days. 
+            Late repayment may attract penalties as explained prior to disbursement. 
+            This service operates in accordance with local lending laws.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Contact</h2>
+        <p><strong>Phone:</strong> +234 806 980 0778</p>
+        <p><strong>WhatsApp:</strong> +234 806 980 0778</p>
+    </div>
+
+    <div class="footer">© 2026 Nuelda Financial Services (N.F.S)</div>
+
+</div>
+
+<script>
+function calculateLoan() {
+    const amount = document.getElementById('amount').value;
+    const summary = document.getElementById('summary');
+    if (amount && amount <= 20000) {
+        const interest = amount * 0.15;
+        const receive = amount - interest;
+        summary.style.display = 'block';
+        summary.innerHTML = `<strong>Loan Summary</strong><br>
+        Approved Amount: ₦${amount}<br>
+        Interest (15%): ₦${interest.toFixed(0)}<br>
+        Cash You Receive: ₦${receive.toFixed(0)}<br>
+        Repayment After 30 Days: ₦${amount}`;
+    } else {
+        summary.style.display = 'none';
+    }
+}
+
+function confirmAndSend() {
+    const fields = ['name','phone','address','occupation','amount','reason'];
+    for (let f of fields) {
+        if (!document.getElementById(f).value) {
+            alert('Please complete all fields.');
+            return;
+        }
+    }
+
+    if (!confirm('You confirm that 15% interest will be deducted upfront and the full amount must be repaid in 30 days. Continue?')) {
+        return;
+    }
+
+    const name = nameEl.value = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const occupation = document.getElementById('occupation').value;
+    const amount = document.getElementById('amount').value;
+    const reason = document.getElementById('reason').value;
+
+    const interest = amount * 0.15;
+    const receive = amount - interest;
+
+    const message = `Loan Application – Nuelda Financial Services\n
+Name: ${name}\nPhone: ${phone}\nAddress: ${address}\nOccupation: ${occupation}\nRequested Amount: ₦${amount}\nInterest Deducted: ₦${interest.toFixed(0)}\nCash Received: ₦${receive.toFixed(0)}\nReason: ${reason}`;
+
+    const whatsappNumber = "2348069800778";
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
+</script>
+
+</body>
+</html>
