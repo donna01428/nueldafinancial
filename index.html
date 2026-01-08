@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuelda Financial Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 90px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0b5e3c;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      color: #0b5e3c;
+      margin-top: 30px;
+    }
+
+    .contact-info {
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info a {
+      color: #0b5e3c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .highlight {
+      background: #f0f8f4;
+      padding: 12px;
+      border-left: 4px solid #0b5e3c;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      background: #0b5e3c;
+      color: #ffffff;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #094c31;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 30px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">
+      <!-- Simple text logo (you can replace with image later) -->
+      <img src="https://via.placeholder.com/90x90?text=NFS" alt="NFS Logo">
+    </div>
+
+    <h1>Nuelda Financial Services</h1>
+
+    <div class="contact-info">
+      No. 45 Okpanam Road beside Living Faith Church, Asaba, Delta State<br>
+      📞 <a href="tel:+2348037785772">+234 803 778 5772</a> |
+      ✉️ <a href="mailto:donna01428@gmail.com">donna01428@gmail.com</a>
+    </div>
+
+    <p>
+      We provide short-term cash loans with fast approval. Disbursement is done in person only.
+    </p>
+
+    <h3>Loan Details</h3>
+    <p>
+      <strong>Maximum Loan:</strong> ₦20,000<br>
+      <strong>Interest:</strong> 15% (deducted upfront)<br>
+      <strong>Repayment Period:</strong> 30 days
+    </p>
+
+    <p>
+      Example:<br>
+      Borrow ₦10,000 → Receive ₦8,500 → Repay ₦10,000<br>
+      Borrow ₦20,000 → Receive ₦17,000 → Repay ₦20,000
+    </p>
+
+    <h3>Loan Application</h3>
+
+    <label>Full Name</label>
+    <input type="text" id="name">
+
+    <label>Phone Number</label>
+    <input type="tel" id="phone">
+
+    <label>Home Address</label>
+    <input type="text" id="address">
+
+    <label>Occupation</label>
+    <input type="text" id="occupation">
+
+    <label>Loan Amount (₦)</label>
+    <input type="number" id="amount">
+
+    <h3>Terms and Conditions</h3>
+    <ul>
+      <li>Maximum loan amount is ₦20,000.</li>
+      <li>Interest rate is 15%, deducted upfront.</li>
+      <li>Loan duration is 30 days.</li>
+      <li>Full repayment must be made within the agreed period.</li>
+      <li>Late repayment may attract penalties.</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>No COLLATERAL is required</strong>, but the borrower must return the said amount by the end of the month except on special request.
+    </div>
+
+    <label>Electronic Signature</label>
+    <input type="text" id="signature" placeholder="Type your full name">
+
+    <label>Date</label>
+    <input type="date" id="sigdate">
+
+    <button onclick="sendToWhatsApp()">Apply via WhatsApp</button>
+
+    <footer>
+      © 2026 Nuelda Financial Services. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const occupation = document.getElementById("occupation").value;
+      const amount = document.getElementById("amount").value;
+      const signature = document.getElementById("signature").value;
+      const date = document.getElementById("sigdate").value;
+
+      if (!signature || !date) {
+        alert("Please provide your electronic signature and date.");
+        return;
+      }
+
+      const message =
+`Loan Application - Nuelda Financial Services
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+Occupation: ${occupation}
+Loan Amount: ₦${amount}
+
+Electronic Signature: ${signature}
+Date: ${date}`;
+
+      window.open(
+        `https://wa.me/2348069800778?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+    }
+  </script>
+
+</body>
+</html>
