@@ -11,9 +11,9 @@
 }
 
 .logo img {
-  width: 150px;       /* Adjust size as needed */
-  max-width: 80%;     /* Keeps it responsive on mobile */
-  height: auto;       /* Maintains aspect ratio */
+  width: 150px;
+  max-width: 80%;
+  height: auto;
   display: inline-block;
 }
 
@@ -130,7 +130,6 @@
   <div class="container">
 
     <div class="logo">
-    
       <img src="logo.png" alt="Nuelda Financial Services Logo">
     </div>
 
@@ -176,6 +175,10 @@
     <label>Loan Amount (₦)</label>
     <input type="number" id="amount">
 
+    <!-- ✅ ONLY ADDITION -->
+    <label>Borrower’s Account Number</label>
+    <input type="number" id="accountnumber">
+
     <h3>Terms and Conditions</h3>
     <ul>
       <li>Maximum loan amount is ₦20,000.</li>
@@ -210,6 +213,7 @@
       const address = document.getElementById("address").value;
       const occupation = document.getElementById("occupation").value;
       const amount = document.getElementById("amount").value;
+      const account = document.getElementById("accountnumber").value;
       const signature = document.getElementById("signature").value;
       const date = document.getElementById("sigdate").value;
 
@@ -226,6 +230,7 @@ Phone: ${phone}
 Address: ${address}
 Occupation: ${occupation}
 Loan Amount: ₦${amount}
+Account Number: ${account}
 
 Electronic Signature: ${signature}
 Date: ${date}`;
@@ -239,6 +244,3 @@ Date: ${date}`;
 
 </body>
 </html>
-
-
-
